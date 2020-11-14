@@ -13,16 +13,16 @@ public class PalindromicNumberFinder {
 
     // this method should find the next palindromic number
     public int searchForPalindromicNum(int num){
-     // int myNum = num;
-      while(num < Integer.MAX_VALUE){
-        num++;
-        if(testPalindromicNum(num) == true){
-          reverseNum(num);
+     int myNum = num;
+      while(myNum < Integer.MAX_VALUE){
+        myNum++;
+        // System.out.println(myNum);
+        if(testPalindromicNum(myNum) == true){
+          reverseNum(myNum);
           break;
         }
       }
-      return num;
-      
+      return myNum - num;
     }
 
     // this is a helper method for searchForPalindromicNum. It's purpose is to test if a number is actually a palindrome
@@ -30,8 +30,9 @@ public class PalindromicNumberFinder {
       boolean test = false;
       String original = Integer.toString(num);
       String reverse = reverseNum(num);
-      //String reverse = original.substring(original.length()/2) + original.substring(0,original.length()/2);
-      if(original == reverse){
+      // System.out.println(original);
+      // System.out.println(reverse);
+      if(original.equals(reverse)){
           test = true;
       }
       return test;
@@ -40,11 +41,12 @@ public class PalindromicNumberFinder {
 
     // this is a helper method for testPalindromicNum. It should reverse the number and return it.
     public String reverseNum(int num){
-      String original = Integer.toString(num);
-      String reverse = original.substring(original.length()/2) + original.substring(0,original.length()/2);
-      //if(original == reverse){
+     String original = Integer.toString(num);
+     String reverse = "";
+     for(int i = original.length()-1; i >= 0; i--){
+       reverse = reverse + original.charAt(i);
+     }
         return reverse;
-      //}
     }
 
 
